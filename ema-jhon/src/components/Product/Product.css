@@ -2,7 +2,7 @@
     display: flex;
     border-bottom: 1px solid lightgray;
     margin-right: 10px;
-    
+    padding-bottom: 5px;
 }
 .description-container{
     margin-left: 15px;
@@ -13,4 +13,12 @@
 .single-h4{
     color: blue;
 
+}
+.button{
+    background-color: goldenrod;
+    border: 1px solid gray;
+    width: 180px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
