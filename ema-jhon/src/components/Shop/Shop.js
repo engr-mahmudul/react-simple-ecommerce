@@ -9,10 +9,16 @@ const Shop = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
-    // Here create the event handler Function and send this as a props 
+
+    const [cart, setCart] = useState([]);
     const addToCart = (product) => {
-        console.log(product);
+        // Here create the event handler Function and send this as a props 
+       let newCart = [...cart, product]; //ekhne setCart array set korbe kintu  product hocche array element 
+       setCart(newCart);
+       
     }
+    console.log(cart);
+  
     return (
         <div className='shop-contaienr'>
             <div className="product-container">
@@ -26,7 +32,7 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <h2>Order Summary</h2>
-                <h5>Items ordered</h5>
+                <h5>{cart.length}</h5>
             </div>
         </div>
     );
