@@ -31,7 +31,7 @@ const Shop = () => {
                 console.log(key, matchedData);
                 
             }
-           
+           setCart(cartArray);
         }
         // console.log(cartArray.length);
         
