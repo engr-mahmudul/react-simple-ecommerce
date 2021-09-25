@@ -2,6 +2,7 @@ import './Shop.css'
 import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
+import { addToDb } from '../../utilities/fakedb';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -14,12 +15,14 @@ const Shop = () => {
     const [cart, setCart] = useState([]);
     const addToCart = (product) => {
         // Here create the event handler Function and send this as a props 
-       let newCart = [...cart, product]; //ekhne setCart array set korbe kintu  product hocche array element 
-       setCart(newCart);
-       
+        let newCart = [...cart, product]; //ekhne setCart array set korbe kintu  product hocche array element 
+        setCart(newCart);
+        addToDb(product.key)  //Send data to the browser Local Storage 
+        // console.log(product);
+
     }
-   
-  
+
+
     return (
         <div className='shop-contaienr'>
             <div className="product-container">
