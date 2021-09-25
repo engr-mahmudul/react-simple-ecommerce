@@ -21,23 +21,32 @@ const Shop = () => {
         // console.log(product);
 
     }
+    // Here data is downloading from the local storage to show in the cart 
     useEffect(() => { // 
         const cartData = getStoredCart() // local storage theke load kora hoccge.
+        
         const cartArray = [];
         if(products.length){ //Check kora hocche fetch korar por data download hoise kina
             for (const key in cartData) { //cart object er moddhe loop chalanu hocche
                 const matchedData = products.find(product => product.key === key);// products theke cart er  product golake ber kora hocche checking er maddhome.
-                cartArray.push(matchedData);// noton ekta array te push kora hocche.
-                console.log(key, matchedData);
+                if(matchedData){
+                    const  quantity = cartData[key];
+                    // console.log(key,quantity);
+                    matchedData.quantity = quantity;
+                    cartArray.push(matchedData);// noton ekta array te push kora hocche.
+                // console.log(key, matchedData);
+                }
                 
             }
-           setCart(cartArray);
+           setCart(cartArray); // cart state e set koar hocche value
         }
         // console.log(cartArray.length);
         
-    }, [products]);
+    }, [products]);// useState e products updata howar por abar useEffet er code ta sobta run hobe. ekhne [] just ekbarei run hobe.egola k depencdecy bole.
 
-    
+    useEffect(()=>{
+        // console.log(cart);
+    },[cart])
     return (
         <div className='shop-contaienr'>
             <div className="product-container">
