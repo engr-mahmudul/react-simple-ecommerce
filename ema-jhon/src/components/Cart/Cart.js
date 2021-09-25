@@ -13,7 +13,7 @@ const Cart = (props) => {
     return (
         <div className='style'>
             <h2>Order Summary</h2>
-                
+                <h3>{cart.length}</h3>
                 <h5>Total: {sum.toFixed(2)}</h5>
                 <h5>Shipping: {shipping}</h5>
                 <h5>Tax: {tax.toFixed(2)}</h5>
