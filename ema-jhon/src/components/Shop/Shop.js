@@ -2,7 +2,7 @@ import './Shop.css'
 import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
-import { addToDb,getDb, getStoredCart } from '../../utilities/fakedb';
+import { addToDb, getDb, getStoredCart } from '../../utilities/fakedb';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -21,12 +21,23 @@ const Shop = () => {
         // console.log(product);
 
     }
-    useEffect(() =>{
-        const cartData = getStoredCart()
-        console.log(cartData);
-    },[])
+    useEffect(() => { // 
+        const cartData = getStoredCart() // local storage theke load kora hoccge.
+        const cartArray = [];
+        if(products.length){ //Check kora hocche fetch korar por data download hoise kina
+            for (const key in cartData) { //cart object er moddhe loop chalanu hocche
+                const matchedData = products.find(product => product.key === key);// products theke cart er  product golake ber kora hocche checking er maddhome.
+                cartArray.push(matchedData);// noton ekta array te push kora hocche.
+                console.log(key, matchedData);
+                
+            }
+           
+        }
+        // console.log(cartArray.length);
+        
+    }, [products]);
 
-
+    
     return (
         <div className='shop-contaienr'>
             <div className="product-container">
